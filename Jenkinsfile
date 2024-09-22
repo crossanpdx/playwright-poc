@@ -7,7 +7,7 @@ pipeline {
         stage('test') {
             steps {
                 script {
-                sh mvn compile exec:java -D exec.mainClass=org.example.App
+                sh 'mvn compile exec:java -D exec.mainClass=org.example.App'
                 }
             }
             post {
