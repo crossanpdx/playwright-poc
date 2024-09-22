@@ -4,12 +4,14 @@ pipeline {
             image 'mcr.microsoft.com/playwright:v1.17.2-focal'
         }
     }
+    stages {
         stage('test') {
             steps {
                 script {
                 sh 'mvn compile exec:java -D exec.mainClass=org.example.App'
                 }
-            }
+         }
+            
             post {
                 success {
                     archiveArtifacts(artifacts: 'homepage-*.png', followSymlinks: false)
@@ -18,3 +20,4 @@ pipeline {
             }
         }
     }
+}
